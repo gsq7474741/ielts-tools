@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>dicationDialog</class>
+ <widget class="QDialog" name="dicationDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>841</width>
+    <height>661</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Dication</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGroupBox" name="groupBox_player">
+     <property name="maximumSize">
+      <size>
+       <width>16777215</width>
+       <height>175</height>
+      </size>
+     </property>
+     <property name="title">
+      <string>Player</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_3">
+      <item>
+       <widget class="QFrame" name="frame_audioFileSelect">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="minimumSize">
+            <size>
+             <width>88</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Audio:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_audioPath">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_openAudio">
+           <property name="text">
+            <string>Open</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_wordListFileSelect">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="minimumSize">
+            <size>
+             <width>88</width>
+             <height>26</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>World List:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="lineEdit_wordListPath">
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_openWordList">
+           <property name="text">
+            <string>Open</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="frame_playControl">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="bottomMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QSlider" name="sliderPosition">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_playProgress">
+           <property name="text">
+            <string>time</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="pushButton_play">
+           <property name="maximumSize">
+            <size>
+             <width>80</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>Play</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox_dication">
+     <property name="title">
+      <string>Dication</string>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QLineEdit" name="lineEdit_wordInput">
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string>input the word</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_wordStatus">
+        <property name="enabled">
+         <bool>true</bool>
+        </property>
+        <property name="text">
+         <string>x: listining fail</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_next">
+     <property name="text">
+      <string>Next</string>
+     </property>
+     <property name="shortcut">
+      <string>Return</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_openAudio</sender>
+   <signal>clicked()</signal>
+   <receiver>dicationDialog</receiver>
+   <slot>btn_open_audio_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>722</x>
+     <y>57</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_play</sender>
+   <signal>clicked()</signal>
+   <receiver>dicationDialog</receiver>
+   <slot>btn_play_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>641</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_openWordList</sender>
+   <signal>clicked()</signal>
+   <receiver>dicationDialog</receiver>
+   <slot>btn_open_word_list_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>722</x>
+     <y>105</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_next</sender>
+   <signal>clicked()</signal>
+   <receiver>dicationDialog</receiver>
+   <slot>btn_next_clicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>420</x>
+     <y>635</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>330</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>lineEdit_wordInput</sender>
+   <signal>returnPressed()</signal>
+   <receiver>dicationDialog</receiver>
+   <slot>line_word_input_return_pressed()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>401</x>
+     <y>231</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>401</x>
+     <y>300</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>btn_open_audio_clicked()</slot>
+  <slot>btn_open_word_list_clicked()</slot>
+  <slot>btn_play_clicked()</slot>
+  <slot>btn_next_clicked()</slot>
+  <slot>line_word_input_return_pressed()</slot>
+ </slots>
+</ui>
