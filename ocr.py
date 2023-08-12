@@ -10,47 +10,50 @@ SECRET_KEY = "n2wUaqiqdyf9Re9eG7qPGhFva3ur5B0x"
 
 
 def main():
-    img_list = os.listdir('img/c3p')
-    word_list_name = 'c3p'
-    for img in img_list:
-        image_file = 'img/c3p/' + img
-        url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate?access_token=" + get_access_token()
+    for i in range(1):
+        prefix = 'c3p'
+        word_list_name = f'{prefix}{i + 1}'
+        path_prefix = f'img/{word_list_name}'
+        img_list = os.listdir(path_prefix)
+        for img in img_list:
+            image_file = f'{path_prefix}/{img}'
+            url = "https://aip.baidubce.com/rest/2.0/ocr/v1/accurate?access_token=" + get_access_token()
 
-        # print(f'base64encoded_file(image_file):{base64encoded_file(image_file)}')
-        # return
+            # print(f'base64encoded_file(image_file):{base64encoded_file(image_file)}')
+            # return
 
-        payload = f'image={url_encode_string(base64encoded_file(image_file))}'
-        headers = {
-            'Content-Type': 'application/x-www-form-urlencoded',
-            'Accept': 'application/json'
-        }
+            payload = f'image={url_encode_string(base64encoded_file(image_file))}'
+            headers = {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            }
 
-        response = requests.request("POST", url, headers=headers, data=payload)
+            response = requests.request("POST", url, headers=headers, data=payload)
 
-        print(response.text)
+            print(response.text)
 
-        res = json.loads(response.text)
+            res = json.loads(response.text)
 
-        left_list = []
-        right_list = []
+            # left_list = []
+            # right_list = []
+            #
+            # last_top = -100
+            # for w in res['words_result']:
+            #     if abs(w['location']['top'] - last_top) < 20:
+            #         right_list.append(w)
+            #     else:
+            #         left_list.append(w)
+            #     last_top = w['location']['top']
+            #
+            # merge_list = left_list + right_list
 
-        last_top = -100
-        for w in res['words_result']:
-            if abs(w['location']['top'] - last_top) < 20:
-                right_list.append(w)
-            else:
-                left_list.append(w)
-            last_top = w['location']['top']
+            # print(f'merge_list:{merge_list}')
 
-        merge_list = left_list + right_list
+            with open(f'word_list/{word_list_name}.txt', 'a', encoding='utf-8') as f:
+                for w in res['words_result']:
+                    f.write(w['words'] + '\n')
 
-        print(f'merge_list:{merge_list}')
-
-        with open(f'word_list/{word_list_name}.txt', 'a', encoding='utf-8') as f:
-            for w in merge_list:
-                f.write(w['words'] + '\n')
-
-        d = 3
+            d = 3
 
 
 def get_access_token():
@@ -74,4 +77,3 @@ def url_encode_string(str):
 
 if __name__ == '__main__':
     main()
-
